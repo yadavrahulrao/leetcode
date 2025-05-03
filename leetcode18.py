@@ -1,0 +1,26 @@
+#Combination Sum
+
+
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        result = []
+
+        def backtrack(start, path, total):
+            if total == target:
+                result.append(list(path))  # make a copy of current path
+                return
+            if total > target:
+                return  # stop exploring if the sum exceeds the target
+
+            for i in range(start, len(candidates)):
+                path.append(candidates[i])
+                backtrack(i, path, total + candidates[i])  # not i + 1 because we can reuse same element
+                path.pop()  # backtrack
+
+        backtrack(0, [], 0)
+        return result
