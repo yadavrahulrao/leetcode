@@ -1,33 +1,33 @@
 #698. Partition to K Equal Sum Subsets
 class Solution:
     def canPartitionKSubsets(self, nums: list[int], k: int) -> bool:
+        
         total = sum(nums)
         if total % k != 0:
-          return False
-
+            return False
+        
         target = total // k
         nums.sort(reverse=True)
 
-        used = [False] * len(nums)
+        buckets = [0] * k
 
-        def backtrack(start, k, curr_sum):
-            if k == 1:
+        def backtrack(index):
+            if index == len(nums):
                 return True
 
-            if curr_sum == target:
-                return backtrack(0, k - 1, 0)
+            for i in range(k):
+                if buckets[i] + nums[index] <= target:
+                    buckets[i] += nums[index]
 
-            for i in range(start, len(nums)):
-                if used[i] or curr_sum + nums[i] > target:
-                    continue
+                    if backtrack(index + 1):
+                        return True
 
-                used[i] = True
+                    buckets[i] -= nums[index]
 
-                if backtrack(i + 1, k, curr_sum + nums[i]):
-                    return True
-
-                used[i] = False
+                # pruning: avoid same state
+                if buckets[i] == 0:
+                    break
 
             return False
 
-        return backtrack(0, k, 0)
+        return backtrack(0)
