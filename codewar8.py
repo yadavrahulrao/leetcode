@@ -29,3 +29,7 @@ def pig_it(text):
     
     return f
 print(pig_it('Pig latin is cool'))
+
+
+# def pig_it(text):
+#     return " ".join(x[1:] + x[0] + "ay" if x.isalnum() else x for x in text.split())
