@@ -7,11 +7,11 @@ class Solution(object):
       j = 0
       for right , i in enumerate(s):
         count[i] += 1
-        # j = max(j,count[i])
-        # if right - left + 1 - j > k :
-        #   count[s[left]] -= 1
-        #   left += 1
-      return count
+        j = max(j,count[i])
+        if right - left + 1 - j > k :
+          count[s[left]] -= 1
+          left += 1
+      return len(s) - left
 
 
 s = Solution()
