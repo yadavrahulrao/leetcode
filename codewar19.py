@@ -47,6 +47,5 @@ def next_bigger(n):
     l = dig[:idx + 1]
     r = sorted(dig[idx + 1 :])
 
-    return int("".join(l + r))
-
+    return int("".join(l + r))    
 print(next_bigger(513))
