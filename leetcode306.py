@@ -19,9 +19,6 @@ class Solution:
 
         return ans
 
-    
-
-
 obj = Solution()
 print(obj.maxVowels("abciiidef",3))
         
