@@ -5,7 +5,7 @@ class Solution:
         # code here
         x = 0 
         y = len(s)-1
-
+        
         def rever(s, x , y ):
 
             if x >= y :
@@ -15,6 +15,7 @@ class Solution:
                 return False
             return rever(s,x+1,y-1)
         return rever(s,x,y)
+        
 obj = Solution()
 print(obj.isPalindrome("abba"))
 
