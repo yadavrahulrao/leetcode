@@ -10,4 +10,3 @@ class Solution(object):
 
 obj = Solution()
 print(obj.sumCounts([1,2,1]))
-        
